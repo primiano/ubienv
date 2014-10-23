@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+case $1 in
+ "left")
+ wmctrl -r :ACTIVE: -e 0,0,0,960,1152
+;;
+ "right")
+ wmctrl -r :ACTIVE: -e 0,960,0,960,1152
+;;
+ "top")
+ wmctrl -r :ACTIVE: -e 0,1920,0,960,1152
+# wmctrl -r :ACTIVE: -e 0,1920,0,1200,920
+;;
+ "bottom")
+ wmctrl -r :ACTIVE: -e 0,2880,0,960,1152
+# wmctrl -r :ACTIVE: -e 0,1920,960,1200,940
+;;
+
+esac

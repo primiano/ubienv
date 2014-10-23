@@ -1,0 +1,5 @@
+# Please sort according to the ASCII table, not human languages.
+export LC_COLLATE="C"
+
+export TOOLS_DIR="${HOME}/tools"
+mkdir -p "${TOOLS_DIR}"

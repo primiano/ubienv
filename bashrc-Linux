@@ -1,0 +1,15 @@
+# Linux-specific functions
+
+ubienv::install_system_packages() {
+  # sudo apt-get update -qq
+  dpkg-query -W "$@" > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    ubienv::msg "[apt-get install] $@"
+    sudo apt-get install -qqy "$@"
+  fi
+}
+
+ubienv::install_python_packages() {
+  ubienv::msg "[pip install] $@"
+  pip install -q --upgrade --user "$@"
+}

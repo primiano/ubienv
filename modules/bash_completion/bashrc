@@ -1,0 +1,7 @@
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  source /etc/bash_completion
+fi
+
+if [ -d "${TOOLS_DIR}/google-cloud-sdk" ]; then
+  source "${TOOLS_DIR}/google-cloud-sdk/completion.bash.inc"
+fi

@@ -1,0 +1,7 @@
+# These modules are for developement. They are not part of _default_ because
+# I tend to keep that clean (e.g., don't always need this when bootstrapping
+# my VMs).
+mod:android_sdk
+mod:depot_tools
+mod:google_cloud_sdk
+mod:nodejs

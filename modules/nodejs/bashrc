@@ -1,0 +1,8 @@
+export NODE_JS_VER="v0.10.31"
+
+if [ -d ${TOOLS_DIR}/nvm/${NODE_JS_VER} ]; then
+  export NODE_PATH="${TOOLS_DIR}/nvm/${NODE_JS_VER}/lib/node_modules"
+  export PATH="$PATH:${TOOLS_DIR}/nvm/${NODE_JS_VER}/bin"
+else
+  ubienv::err "nvm / node don't seem to be installed."
+fi

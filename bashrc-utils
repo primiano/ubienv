@@ -1,0 +1,54 @@
+ubienv::msg_color() {
+  local color="$1"
+  shift
+  echo -e "*** [UbiEnv] \e[${color}m$@\e[0m"
+}
+
+ubienv::err() {
+  ubienv::msg_color "31" "$@"
+}
+
+ubienv::msg() {
+  ubienv::msg_color "32" "$@"
+}
+
+# Creates a symlink from $1 to $2 if not already existent.
+ubienv::symlink_if_changed() {
+  local src="$1"
+  local tgt="$2"
+  if [ -L "$tgt" ]; then
+    if [ "$(readlink ""${tgt}"")" == "${src}" ]; then
+      return  # Not changed
+    else
+      rm -f "${tgt}"
+    fi
+  elif [ -e "${tgt}" ]; then
+    ubienv::msg "[WARN] ${tgt} is not a symlink. Skipping"
+    return
+  fi
+  ubienv::msg "Symlinking $src"
+  ln -s "${src}" "${tgt}"
+}
+
+in_array() {
+    local haystack=${1}[@]
+    local needle=${2}
+    for i in ${!haystack}; do
+        if [[ ${i} == ${needle} ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+# Creates the symlinks for a given profile path to the user $HOME dir.
+# $1: path to module directory.
+ubienv::install_dotconfigs() {
+  local dotdir="$1/dotconfigs"
+  local fname
+  if [ -e "${dotdir}" ]; then
+    for fname in $(/bin/ls -A "${dotdir}"); do
+      ubienv::symlink_if_changed "${dotdir//""${HOME}""\//}/${fname}" "$HOME/$fname"
+    done
+  fi
+}

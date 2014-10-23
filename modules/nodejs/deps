@@ -1,0 +1,6 @@
+mod:git
+sys:build-essential
+sys:curl
+sys:libssl-dev
+sys:openssl
+sys:python

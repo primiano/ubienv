@@ -1,0 +1,51 @@
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+if [ "${UBIENV_OS}" == "Darwin" ]; then
+  alias ll='ls -alhFG'
+else
+  alias ll='ls -lha'
+fi
+
+alias adl='adb devices -l'
+alias aps='adb shell ps'
+alias btsc='btrfs subvolume create'
+alias btss='btrfs subvolume snapshot'
+alias btsdel='btrfs subvolume delete'
+alias em='TERM=xterm-256color emacs -nw'
+alias rsc='rsync -ahD --ignore-errors --force --delete --stats --inplace'
+alias s='subl -a'
+alias vi='vim'
+
+
+# Not really aliases, but kind of...
+
+# Path independent git blame
+gblm() {
+  (cd "$(dirname ""$1"")"; git blame "$(basename ""$1"")")
+}
+
+# Path independent git log
+glog() {
+  (cd "$(dirname ""$1"")"; git log "$(basename ""$1"")")
+}
+
+# Find File
+ff() {
+ find . -iname "$@"
+}
+
+# Find In File
+fif() {
+  if [ "$#" == "1" ]; then
+    grep -Iri "$1" .
+  else
+    grep -Iri "$2" . --include="*\.$1*"
+  fi
+}
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+adb root
+adb wait-for-device
+
+adb shell "echo 4 > /sys/kernel/debug/tegra_hotplug/min_cpus"
+for I in 0 1 2 3
+do
+ adb shell "echo $1 > /sys/devices/system/cpu/cpu$I/cpufreq/scaling_governor"
+done

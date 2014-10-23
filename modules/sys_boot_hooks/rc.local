@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# WAR for a btrfs bug.
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
+# Kernel tuning for workstations with *whole lotta ram*.
+(
+  MEM_TOT=($(cat /proc/meminfo | grep MemTotal))
+  if [ ${MEM_TOT} -gt 12000000 ]; then
+    swapoff -a
+    sysctl vm.dirty_writeback_centisecs=3000
+    sysctl vm.vfs_cache_pressure=60
+  fi
+)
+
+# Everybody loves control groups.
+CGROOT="/sys/fs/cgroup"
+if [ -d "${CGROOT}" ]; then
+  if [ ! -d "${CGROOT}/cpu" ]; then
+    mkdir -p "${CGROOT}/cpu"
+    mount -t cgroup -o cpu none "${CGROOT}/cpu"
+    chown -R root.sudo "${CGROOT}/cpu"
+    chmod g+rwx "${CGROOT}/cpu"
+    chmod g+rwx "${CGROOT}/cpu/tasks"
+  fi
+
+  if [ ! -d "${CGROOT}/memory" ]; then
+    mkdir -p "${CGROOT}/memory"
+    mount -t cgroup -o memory none "${CGROOT}/memory"
+    chown -R root.sudo "${CGROOT}/memory"
+    chmod g+rwx "${CGROOT}/memory"
+    chmod g+rwx "${CGROOT}/memory/tasks"
+  fi
+fi
+
+
+#sudo -u nobody /usr/local/google/wake-my-subnet/wake-my-subnet.py -d -p 8080
+
+exit 0

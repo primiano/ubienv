@@ -1,0 +1,19 @@
+function get_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+function get_timestamp {
+  date +'%k:%M:%S %d/%m'
+}
+
+if [ "$PS1_COLOR" == "" ]; then
+  # This is typically set in the host-specific bashrc to have a different
+  # color for each host.
+  PS1_COLOR="42m"  # fallback to green if not defined.
+fi
+
+PS1="\n\[\033[$PS1_COLOR\]\[\033[37m\]\w\[\033[0m\] \[\033[01;34m\]\$(get_git_branch)\[\033[00m\] \$(get_timestamp)\n\$ "
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize

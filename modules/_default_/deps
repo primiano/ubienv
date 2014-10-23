@@ -1,0 +1,11 @@
+# These modules will be installed everywhere.
+# They are essentially the survival kit :-)
+inc:bash_aliases
+inc:cli_editors
+inc:custom_keyboard_layout
+inc:fancy_prompt
+inc:screen
+inc:bash_history
+inc:git
+inc:sys_boot_hooks
+inc:bash_completion

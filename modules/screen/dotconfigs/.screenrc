@@ -1,0 +1,32 @@
+activity ""
+altscreen on
+autodetach on
+deflogin on
+defflow off
+defscrollback 20000
+defutf8 on
+msgwait 1
+nethack on
+defnonblock on
+nonblock on
+startup_message off
+vbell off
+vbell_msg ""
+msgminwait 0
+bell_msg "!!! Ding !!!"
+
+# Only S-K to kill
+bind j focus down
+bind k focus up
+bindkey -k k9 copy
+bindkey -k k; copy
+bindkey -k F1 prev
+bindkey -k F2 next
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+setenv IGNOREEOF 10
+
+defbce on
+term screen-256color-bce
+
+caption always "%{= kb}[ %=%{w}%?%-Lw%?%{b}(%{W}%n*%f %t%?(%u)%?%{b})%{w}%?%+Lw%?%?%= %{b}][%{B} %d.%m.%Y %{W}%0c %{b}]"
+sorendition +b kG

@@ -1,0 +1,33 @@
+[include]
+  path = ~/.gitconfig-identity  # Include identity conf.
+[alias]
+  amm = commit -av --amend
+  br = branch
+  cdf = clean -df
+  dc = diff --cached
+  co = checkout
+  l = log @{upstream}..
+  mp = map-branches
+  pff = pull --ff-only
+  st = status
+[branch]
+  autosetuprebase = always
+[color]
+  ui = auto
+[core]
+  deltaBaseCacheLimit = 2G
+  excludesfile = ~/.gitexcludes
+[difftool]
+  prompt = no
+[log]
+  date = short
+[merge]
+  conflictstyle = diff3
+  tool = vimdiff
+[push]
+  default = simple
+[sendemail]
+  confirm = always
+  chainreplyto = false
+[rebase]
+  autosquash = true

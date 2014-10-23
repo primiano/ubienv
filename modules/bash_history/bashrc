@@ -1,0 +1,18 @@
+HISTSIZE=10000
+HISTFILESIZE=10000
+HISTIGNORE="ls:ls -l:ls -la:ll"
+HISTCONTROL="ignoredups:erasedups histappend"
+
+HISTFILE_BASE="$HOME/bash_history"
+if [ ! -d "$HISTFILE_BASE" ]; then
+  mkdir -p "$HISTFILE_BASE"
+fi
+
+if [ "$SESSION_NAME" != "" ]; then
+  HISTFILE="$HISTFILE_BASE/$SESSION_NAME"
+else
+  HISTFILE="$HISTFILE_BASE/common"
+fi
+
+alias hsave='history -w $HISTFILE'
+alias hload='history -c; history -r $HISTFILE'
