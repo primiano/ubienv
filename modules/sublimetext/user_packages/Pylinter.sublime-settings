@@ -1,0 +1,7 @@
+{
+  "python_path": [
+    "/src/chrome-mi/src/tools/memory_inspector",
+    "/src/chrome-mi/src/build/android/pylib/",
+    "/src/chrome-mi/src/build/android/"
+  ]
+}

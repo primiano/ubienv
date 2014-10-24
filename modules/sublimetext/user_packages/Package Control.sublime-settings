@@ -1,0 +1,11 @@
+{
+	"installed_packages":
+	[
+		"Cscope",
+		"GitGutter",
+		"JsonTree",
+		"Pretty JSON",
+		"Pylinter",
+		"Python Auto-Complete"
+	]
+}
