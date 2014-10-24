@@ -1,7 +1,8 @@
 # These modules are for developement. They are not part of _default_ because
 # I tend to keep that clean (e.g., don't always need this when bootstrapping
 # my VMs).
-mod:android_sdk
-mod:depot_tools
-mod:google_cloud_sdk
-mod:nodejs
+inc:android_sdk
+inc:depot_tools
+inc:google_cloud_sdk
+inc:nodejs
+###END OF DEPS###

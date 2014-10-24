@@ -1,5 +1,5 @@
-if [ ! -d "${TOOLS_DIR}/depot_tools" ]; then
-  ubienv::err "Could not find ${TOOLS_DIR}/depot_tools"
+if [ ! -d "${TOOLS_DIR}/android-sdk" ]; then
+  ubienv::err "Could not find ${TOOLS_DIR}/android-sdk"
   return
 fi
-export PATH="$PATH:${TOOLS_DIR}/depot_tools"
+export PATH="$PATH:${TOOLS_DIR}/android-sdk/platform-tools/"

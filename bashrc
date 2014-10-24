@@ -107,14 +107,13 @@ ubienv::recurse_in_module_deps() {
   fi
 
   if [ -f "${mod_path}/deps" ]; then
-    echo "$(cat "${mod_path}/deps")" | while read line; do
-      if [ "${line:0:1}" == "#" ]; then
+    while read line; do
+      if [[ "${line:0:1}" == "#" || "${line}" == "" ]]; then
         continue
       fi
       local arr=(${line//:/ })
       local dep_type="${arr[0]}"
       local dep_name="${arr[1]}"
-
       if [ "${dep_type}" == "mod" ]; then
         subdeps+=("${dep_name}")
       elif [ "${dep_type}" == "inc" ]; then
@@ -129,7 +128,7 @@ ubienv::recurse_in_module_deps() {
       unset dep_name
       unset dep_type
       unset arr
-    done
+    done < ${mod_path}/deps
   fi
 
   if [ "${phase}" == "install" ]; then
