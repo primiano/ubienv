@@ -4,7 +4,7 @@ ubienv::install_system_packages() {
   brew info "$@" > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     ubienv::msg "[brew install] $@"
-    brew install -qqy "$@"
+    brew install "$@" || true
   fi
 }
 

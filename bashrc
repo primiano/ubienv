@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export readonly UBIENV_ROOT="${BASH_SOURCE[0]%/*}"
+export readonly UBIENV_ROOT="$(cd -P ${BASH_SOURCE[0]%/*}; pwd)"
 export readonly UBIENV_OS="$(uname -s)"
 export readonly UBIENV_HOST="$(hostname -s)"
 
@@ -107,7 +107,7 @@ ubienv::recurse_in_module_deps() {
   fi
 
   if [ -f "${mod_path}/deps" ]; then
-    while read line; do
+    echo "$(cat "${mod_path}/deps")" | while read line; do
       if [ "${line:0:1}" == "#" ]; then
         continue
       fi
@@ -129,7 +129,7 @@ ubienv::recurse_in_module_deps() {
       unset dep_name
       unset dep_type
       unset arr
-    done < "${mod_path}/deps"
+    done
   fi
 
   if [ "${phase}" == "install" ]; then
