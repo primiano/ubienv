@@ -1,3 +1,4 @@
+
 #!/bin/bash -e
 THIS_DIR="${BASH_SOURCE[0]%/*}"
 
@@ -8,6 +9,7 @@ if [ "${UBIENV_OS}" == "Linux" ]; then
     echo "Installing ${SRC} into ${TGT}"
     sudo dpkg-divert "${TGT}"
     sudo cp "${SRC}" "${TGT}"
+    sudo rm -f /var/lib/xkb/*.xkm > /dev/null 2>&1 || true
   fi
 elif [ "${UBIENV_OS}" == "Darwin" ]; then
   if ! plutil -p  ~/Library/Preferences/com.apple.HIToolbox.plist \
