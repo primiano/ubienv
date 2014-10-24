@@ -1,5 +1,11 @@
-if [ ! -d "${TOOLS_DIR}/homebrew/bin" ]; then
-  ubienv::err "Could not find ${TOOLS_DIR}/homebrew"
+if [ "${UBIENV_OS}" != "Darwin" ]; then
   return
 fi
-export PATH="$PATH:${TOOLS_DIR}/homebrew/bin"
+if [ "${BREW_HOME}" == "" ]; then
+  export BREW_HOME="${TOOLS_DIR}/homebrew"
+fi
+if [ ! -d "${BREW_HOME}/bin" ]; then
+  ubienv::err "Could not find homebrew in ${BREW_HOME}"
+  return
+fi
+export PATH="$PATH:${BREW_HOME}/bin"
