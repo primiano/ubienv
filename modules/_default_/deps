@@ -1,5 +1,6 @@
 # These modules will be installed everywhere.
 # They are essentially the survival kit :-)
+inc:homebrew
 inc:bash_aliases
 inc:cli_editors
 inc:custom_keyboard_layout

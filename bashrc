@@ -53,10 +53,13 @@ ubienv::install_single_module() {
 ubienv::load_single_module() {
   local mod_name="$1"
   if in_array UBIENV_LOADED_MODULES "$mod_name"; then
-    return 0
+    if [ "$2" != "force" ]; then
+      return 0
+    fi
+  else
+    UBIENV_LOADED_MODULES+=("${mod_name}")
   fi
 
-  UBIENV_LOADED_MODULES+=("${mod_name}")
   local mod_path="$(ubienv::lookup_module "${mod_name}")"
   if [ "${mod_path}" == "" ]; then
     ubienv::err "Could not find the module ${mod_name}"
@@ -149,10 +152,11 @@ ubienv::recurse_in_module_deps() {
     fi
   done
 
-  # Load this module.
+  # (Install and) Load this module.
   if [ "${phase}" == "install" ]; then
     ubienv::install_single_module "${mod_name}"
-  elif [ "${phase}" == "load" ]; then
+    ubienv::load_single_module "${mod_name}" "force"
+  elif  [ "${phase}" == "load" ]; then
     ubienv::load_single_module "${mod_name}"
   fi
 

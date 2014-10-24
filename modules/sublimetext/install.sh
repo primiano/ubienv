@@ -1,7 +1,6 @@
 #!/bin/bash -e
 source "${UBIENV_ROOT}/bashrc-utils"
-THIS_FILE="$(realpath ""${BASH_SOURCE:-$0}"")"
-THIS_DIR="$(realpath ""$(dirname """"${THIS_FILE}"""")"")"
+THIS_DIR="${BASH_SOURCE[0]%/*}"
 USER_PKG="${HOME}/.config/sublime-text-3/Packages/User"
 
 if [ "$UBIENV_OS" == "Linux" ]; then
@@ -37,7 +36,4 @@ if [ "${USER_PKG}" != "" ]; then
                              "${USER_PKG}"
 fi
 
-unset USER_PKG
-unset THIS_FILE
-unset THIS_DIR
 exit 0
