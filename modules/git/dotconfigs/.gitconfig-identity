@@ -1,0 +1,5 @@
+# This is the default identity. Can be overridden in other modules
+# by re-defining another .gitconfig-identity file in dotconfigs/
+[user]
+  name = Primiano Tucci
+  email = p.tucci@gmail.com

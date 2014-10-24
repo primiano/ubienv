@@ -25,7 +25,7 @@
   conflictstyle = diff3
   tool = vimdiff
 [push]
-  default = simple
+  default = upstream
 [sendemail]
   confirm = always
   chainreplyto = false
