@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 if [ "$UBIENV_OS" != "Linux" ]; then
   exit 0
 fi

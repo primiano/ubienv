@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 if [ "${TOOLS_DIR}" == "" ]; then
   echo "TOOLS_DIR env var not set. Bailing out"
   exit 1

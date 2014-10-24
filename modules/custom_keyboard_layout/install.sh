@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 THIS_DIR="${BASH_SOURCE[0]%/*}"
 
 if [ "${UBIENV_OS}" == "Linux" ]; then
