@@ -7,8 +7,8 @@ function get_timestamp {
 }
 
 if [ "$PS1_COLOR" == "" ]; then
-  # This is typically set in the host-specific bashrc to have a different
-  # color for each host.
+  # This is typically set in the host-specific bashrc to have a different
+  # color for each host.
   PS1_COLOR="42m"  # fallback to green if not defined.
 fi
 

@@ -1,0 +1,14 @@
+# Max-specific functions
+
+ubienv::install_system_packages() {
+  brew info "$@" > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    ubienv::msg "[brew install] $@"
+    brew install -qqy "$@"
+  fi
+}
+
+ubienv::install_python_packages() {
+  ubienv::msg "[pip install] $@"
+  pip install -q --upgrade --user "$@"
+}

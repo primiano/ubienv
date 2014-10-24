@@ -1,11 +1,23 @@
+ubienv::get_script_dir() {
+  local script_rel_path="${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]]}"
+  while [ -h "${script_rel_path}" ] ; do
+    script_rel_path="$(readlink "${script_rel_path}")";
+  done
+  echo "$( cd -P "$( dirname "${script_rel_path}" )" && pwd )"
+}
+
 ubienv::msg_color() {
   local color="$1"
   shift
-  echo -e "*** [UbiEnv] \e[${color}m$@\e[0m"
+  echo -e "[UbiEnv] \033[${color}m$@\033[0m"
 }
 
 ubienv::err() {
   ubienv::msg_color "31" "$@"
+}
+
+ubienv::warn() {
+  ubienv::msg_color "33" "$@"
 }
 
 ubienv::msg() {
@@ -23,7 +35,7 @@ ubienv::symlink_if_changed() {
       rm -f "${tgt}"
     fi
   elif [ -e "${tgt}" ]; then
-    ubienv::msg "[WARN] ${tgt} is not a symlink. Skipping"
+    ubienv::warn "${tgt} is not a symlink. Skipping"
     return
   fi
   ubienv::msg "Symlinking $src"

@@ -1,17 +1,25 @@
 #!/bin/sh -e
-if [ "${UBIENV_OS}" != "Linux" ]; then
+THIS_DIR="${BASH_SOURCE[0]%/*}"
+
+if [ "${UBIENV_OS}" == "Linux" ]; then
+  SRC="${THIS_DIR}/xkb-it"
+  TGT="/usr/share/X11/xkb/symbols/it"
+  if [ "$(md5sum < ""${SRC}"")" != "$(md5sum < ""${TGT}"")" ]; then
+    echo "Installing ${SRC} into ${TGT}"
+    sudo dpkg-divert "${TGT}"
+    sudo cp "${SRC}" "${TGT}"
+  fi
+elif [ "${UBIENV_OS}" == "Darwin" ]; then
+  if ! plutil -p  ~/Library/Preferences/com.apple.HIToolbox.plist \
+     | grep italian-dev  > /dev/null 2>&1; then
+    cp -a "${THIS_DIR}/Italian-dev.bundle" \
+          "${HOME}/Library/Keyboard Layouts/"
+#    sudo cp -a "${THIS_DIR}/Italian-dev.bundle" \
+#                "/System/Library/Keyboard Layouts/"
+  fi
+else
   echo "Unsupported OS '${UBIENV_OS}'"
   exit 1
-fi
-
-THIS_FILE="$(realpath ""${BASH_SOURCE:-$0}"")"
-THIS_DIR="$(realpath ""$(dirname """"${THIS_FILE}"""")"")"
-SRC="${THIS_DIR}/xkb-it"
-TGT="/usr/share/X11/xkb/symbols/it"
-if [ "$(md5sum < ""${SRC}"")" != "$(md5sum < ""${TGT}"")" ]; then
-  echo "Installing ${SRC} into ${TGT}"
-  sudo dpkg-divert "${TGT}"
-  sudo cp "${SRC}" "${TGT}"
 fi
 
 exit 0

@@ -1,20 +1,18 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export readonly UBIENV_ROOT="${BASH_SOURCE[0]%/*}"
 export readonly UBIENV_OS="$(uname -s)"
 export readonly UBIENV_HOST="$(hostname -s)"
-
-THIS_FILE="$(realpath ""${BASH_SOURCE:-$0}"")"
-UBIENV_INSTALLED_MODULES=()
-UBIENV_LOADED_MODULES=()
-
-readonly UBIENV_ROOT="$(realpath ""$(dirname """"${THIS_FILE}"""")"")"
-UBIENV_MODULES_DIRS+=("${UBIENV_ROOT}/modules")
 
 source "${UBIENV_ROOT}/bashrc-utils"
 if [ -f "${UBIENV_ROOT}/bashrc-${UBIENV_OS}" ]; then
   source "${UBIENV_ROOT}/bashrc-${UBIENV_OS}"
 fi
+
+UBIENV_INSTALLED_MODULES=()
+UBIENV_LOADED_MODULES=()
+UBIENV_MODULES_DIRS+=("${UBIENV_ROOT}/modules")
 
 # Looks up a module full path given its name ($1).
 ubienv::lookup_module() {
@@ -196,14 +194,14 @@ ubienv::load
 ###############################################################################
 # Anything below this line (lines added by moronic installers) will be ignored
 # and reported during the prompt
-AFTER_EOF=$(grep -A99 '# \-\-\-EOF\-\-\-' ${THIS_FILE}| tail -n +2)
+AFTER_EOF=$(grep -A99 '# \-\-\-EOF\-\-\-' ${BASH_SOURCE[0]}| tail -n +2)
 if [ "${AFTER_EOF}" != "" ]; then
-  echo "Spurious content detected in ${THIS_FILE}. Cleanup required"
+  echo "Spurious content detected in ${BASH_SOURCE[0]}. Cleanup required"
   echo "--------------------------"
   echo "${AFTER_EOF}"
   echo "--------------------------"
 fi
-unset THIS_FILE
+unset AFTER_EOF
 return
 # ---EOF---
 
