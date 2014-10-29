@@ -8,4 +8,4 @@ if [ ! -d "${BREW_HOME}/bin" ]; then
   ubienv::err "Could not find homebrew in ${BREW_HOME}"
   return
 fi
-export PATH="$PATH:${BREW_HOME}/bin"
+export PATH="${BREW_HOME}/bin:${PATH}"

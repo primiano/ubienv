@@ -5,4 +5,5 @@ inc:android_sdk
 inc:depot_tools
 inc:google_cloud_sdk
 inc:nodejs
+pip:yaml
 ###END OF DEPS###
