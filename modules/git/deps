@@ -1,2 +1,4 @@
 sys:git
+sys:gitk
+sys:git-gui
 ###END OF DEPS###

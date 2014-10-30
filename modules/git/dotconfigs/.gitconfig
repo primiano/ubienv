@@ -19,8 +19,6 @@
   excludesfile = ~/.gitexcludes
 [difftool]
   prompt = no
-[log]
-  date = short
 [merge]
   conflictstyle = diff3
   tool = vimdiff

@@ -2,8 +2,11 @@
 
 ubienv::install_system_packages() {
   # sudo apt-get update -qq
-  dpkg-query -W "$@" > /dev/null 2>&1
-  if [ $? -ne 0 ]; then
+  local pklist=$(dpkg-query -W "$@" 2>/dev/null)
+  local dpkg_ret=$?
+  echo "${pklist}" | grep "||" > /dev/null 2>/dev/null
+  local grep_ret=$?
+  if [[ ${dpkg_ret} -ne 0 || ${grep_ret} -ne 0 ]]; then
     ubienv::msg "[apt-get install] $@"
     sudo apt-get install -qqy "$@"
   fi
