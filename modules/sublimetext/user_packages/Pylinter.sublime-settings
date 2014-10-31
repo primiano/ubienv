@@ -1,7 +1,8 @@
 {
+  "disable": ["C0111", "W0142", "W0311"],
   "python_path": [
-    "/src/chrome-mi/src/tools/memory_inspector",
-    "/src/chrome-mi/src/build/android/pylib/",
-    "/src/chrome-mi/src/build/android/"
+    "/s/chrome-mi/src/tools/memory_inspector",
+    "/s/chrome-mi/src/build/android/pylib/",
+    "/s/chrome-mi/src/build/android/"
   ]
 }
