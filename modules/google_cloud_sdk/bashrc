@@ -2,4 +2,4 @@ if [ ! -d "${TOOLS_DIR}/google-cloud-sdk" ]; then
   ubienv::err "Could not find ${TOOLS_DIR}/google-cloud-sdk"
   return
 fi
-export PATH="$PATH:${TOOLS_DIR}/google-cloud-sdk"
+export PATH="$PATH:${TOOLS_DIR}/google-cloud-sdk/bin"
