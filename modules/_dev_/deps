@@ -6,4 +6,5 @@ inc:depot_tools
 inc:google_cloud_sdk
 inc:nodejs
 pip:yaml
+sys:wget
 ###END OF DEPS###
