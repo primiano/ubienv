@@ -1,5 +1,6 @@
 # These modules will be installed everywhere.
 # They are essentially the survival kit :-)
+sys:python-pip
 inc:homebrew
 inc:bash_aliases
 inc:cli_editors
