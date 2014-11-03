@@ -30,3 +30,5 @@
   chainreplyto = false
 [rebase]
   autosquash = true
+[google]
+	lastUpdateCheck = 20141103000000

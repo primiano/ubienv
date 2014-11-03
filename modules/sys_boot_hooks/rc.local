@@ -34,7 +34,7 @@ if [ -d "${CGROOT}" ]; then
 fi
 
 if [ -x /etc/rc.local2 ]; then
-  ./etc/rc.local2
+  /etc/rc.local2
 fi
 
 exit 0
