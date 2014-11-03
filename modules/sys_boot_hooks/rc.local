@@ -3,10 +3,10 @@
 # WAR for a btrfs bug.
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
-# Kernel tuning for workstations with *whole lotta ram*.
+# Kernel tuning for workstations with lot of ram.
 (
   MEM_TOT=($(cat /proc/meminfo | grep MemTotal))
-  if [ ${MEM_TOT} -gt 12000000 ]; then
+  if [ ${MEM_TOT[1]} -gt 12000000 ]; then
     swapoff -a
     sysctl vm.dirty_writeback_centisecs=3000
     sysctl vm.vfs_cache_pressure=60
@@ -33,7 +33,8 @@ if [ -d "${CGROOT}" ]; then
   fi
 fi
 
-
-#sudo -u nobody /usr/local/google/wake-my-subnet/wake-my-subnet.py -d -p 8080
+if [ -x /etc/rc.local2 ]; then
+  ./etc/rc.local2
+fi
 
 exit 0
