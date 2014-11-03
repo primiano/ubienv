@@ -10,6 +10,7 @@
   mp = map-branches
   pff = pull --ff-only
   st = status
+  wdiff = diff --word-diff -w
 [branch]
   autosetuprebase = always
 [color]
