@@ -17,11 +17,7 @@ alias aps='adb shell ps'
 alias btsc='btrfs subvolume create'
 alias btss='btrfs subvolume snapshot'
 alias btsdel='btrfs subvolume delete'
-alias em='TERM=xterm-256color emacs -nw'
 alias rsc='rsync -ahD --ignore-errors --force --delete --stats --inplace'
-alias s='subl -a'
-alias vi='vim'
-
 
 # Not really aliases, but kind of...
 

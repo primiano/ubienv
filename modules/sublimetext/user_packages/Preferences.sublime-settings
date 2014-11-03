@@ -10,7 +10,7 @@
 		"CVS",
 		".repo"
 	],
-	"font_size": 11,
+	"font_size": 12,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignored_packages":
