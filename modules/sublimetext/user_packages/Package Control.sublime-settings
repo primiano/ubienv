@@ -6,6 +6,7 @@
 		"JsonTree",
 		"Pretty JSON",
 		"Pylinter",
-		"Python Auto-Complete"
+		"Python Auto-Complete",
+		"SFTP"
 	]
 }
