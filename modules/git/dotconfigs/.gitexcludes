@@ -5,6 +5,10 @@
 *.rej
 .svn
 
+#Cloud 9
+.c9revisions/
+.settings
+
 # Mac stuff
 .DS_Store
 .DS_Store?
