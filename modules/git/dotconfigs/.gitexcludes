@@ -26,3 +26,6 @@ xcuserdata
 *.user
 *.ncb
 *.suo
+
+# Autotools
+autom4te.cache/
