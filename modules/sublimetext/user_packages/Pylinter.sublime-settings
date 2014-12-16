@@ -4,5 +4,6 @@
     "/s/chrome-mi/src/tools/memory_inspector",
     "/s/chrome-mi/src/build/android/pylib/",
     "/s/chrome-mi/src/build/android/"
-  ]
+  ],
+  "run_on_save": false,
 }
