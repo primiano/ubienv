@@ -8,9 +8,10 @@
   co = checkout
   l = log @{upstream}..
   mp = map-branches
-  pff = pull --ff-only
+  pff = pull --ff-only --no-rebase
   st = status
   wdiff = diff --word-diff -w
+  lbh = "!git reflog --date=relative $(git symbolic-ref HEAD | sed 's|refs/heads/||')"
 [branch]
   autosetuprebase = always
 [color]
@@ -32,3 +33,5 @@
   autosquash = true
 [google]
 	lastUpdateCheck = 20141103000000
+[http]
+	cookiefile = /usr/local/google/home/primiano/.gitcookies
