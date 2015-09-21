@@ -7,7 +7,7 @@
   dc = diff --cached
   co = checkout
   l = log @{upstream}..
-  mp = map-branches
+  mp = map-branches -vv
   pff = pull --ff-only --no-rebase
   st = status
   wdiff = diff --word-diff -w
@@ -35,3 +35,8 @@
 	lastUpdateCheck = 20141103000000
 [http]
 	cookiefile = /usr/local/google/home/primiano/.gitcookies
+[log]
+	date = local
+[difftool "cdiff"]
+  cmd = /usr/local/google/home/primiano/.local/bin/cdiff -s \"$LOCAL\" \"$REMOTE\"
+  trustExitCode = false

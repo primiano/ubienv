@@ -5,6 +5,9 @@
 *.rej
 .svn
 
+#Atom
+.atom-build.json
+
 #Cloud 9
 .c9revisions/
 .settings
@@ -29,3 +32,9 @@ xcuserdata
 
 # Autotools
 autom4te.cache/
+
+
+chrome-*.config
+chrome-*.files
+chrome-*.creator
+chrome-*.includes
