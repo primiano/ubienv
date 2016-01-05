@@ -11,6 +11,7 @@
   pff = pull --ff-only --no-rebase
   st = status
   wdiff = diff --word-diff -w
+  sxs = difftool @{upstream}.. -t cdiff
   lbh = "!git reflog --date=relative $(git symbolic-ref HEAD | sed 's|refs/heads/||')"
 [branch]
   autosetuprebase = always
