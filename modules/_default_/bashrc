@@ -4,5 +4,7 @@ export LC_COLLATE="C"
 export TOOLS_DIR="${HOME}/tools"
 mkdir -p "${TOOLS_DIR}"
 
+export PATH="${PATH}:$HOME/.local/bin"
+
 bind '"\e[1;5C":forward-word'
 bind '"\e[1;5D":backward-word'
