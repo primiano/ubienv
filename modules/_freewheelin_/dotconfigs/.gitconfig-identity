@@ -1,4 +1,5 @@
 [user]
   name = Primiano Tucci
   email = p.tucci@gmail.com
-
+[credential]
+  helper = osxkeychain

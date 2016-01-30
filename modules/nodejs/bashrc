@@ -1,4 +1,4 @@
-export NODE_JS_VER="v0.8.25"  # Latest maintenance release
+export NODE_JS_VER="v0.10.31"  # Latest maintenance release
 
 if [ -d ${TOOLS_DIR}/nvm/${NODE_JS_VER} ]; then
   export NODE_PATH="${TOOLS_DIR}/nvm/${NODE_JS_VER}/lib/node_modules"
