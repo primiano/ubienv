@@ -5,6 +5,7 @@ inc:android_sdk
 inc:depot_tools
 inc:google_cloud_sdk
 inc:nodejs
+inc:gpg2
 pip:pyyaml
 sys:wget
 ###END OF DEPS###

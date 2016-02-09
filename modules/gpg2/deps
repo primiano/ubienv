@@ -1,0 +1,4 @@
+sys:gnupg2
+sys:gpgsm
+sys:gnupg-agent
+###END OF DEPS###
