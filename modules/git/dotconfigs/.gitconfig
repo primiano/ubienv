@@ -41,3 +41,5 @@
 [difftool "cdiff"]
   cmd = /usr/local/google/home/primiano/.local/bin/cdiff -s \"$LOCAL\" \"$REMOTE\"
   trustExitCode = false
+[pack]
+	threads = 8
