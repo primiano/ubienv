@@ -1,6 +1,3 @@
-UBIENV_GIT_UP=$'\xe2\x86\x91'
-UBIENV_GIT_DN=$'\xe2\x86\x93'
-
 function get_git_branch {
   BRANCH="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)" || return
   if [ "$BRANCH" == "HEAD" ]; then
@@ -8,18 +5,15 @@ function get_git_branch {
   fi
   UPSTREAM="$(git rev-parse --abbrev-ref @{upstream} 2> /dev/null)"
   if [ "$UPSTREAM" != "" ]; then
-    REVUP=$(git rev-list --count "${BRANCH}..${UPSTREAM}")
-    REVDOWN=$(git rev-list --count "${UPSTREAM}..${BRANCH}")
+    REVDOWN=$(git rev-list --count "${BRANCH}..${UPSTREAM}")
+    REVUP=$(git rev-list --count "${UPSTREAM}..${BRANCH}")
+    BRANCH="${BRANCH} @ ${UPSTREAM}"
     if [ "$REVUP" -gt "0" ]; then
-      BRANCH="${BRANCH} ${UBIENV_GIT_UP}${REVUP}"
+      BRANCH="${BRANCH} +${REVUP}"
     fi
     if [ "$REVDOWN" -gt "0" ]; then
-      BRANCH="${BRANCH} ${UBIENV_GIT_DN}${REVDOWN}"
+      BRANCH="${BRANCH} -${REVDOWN}"
     fi
-    if [ "$REVUP" -eq "0" -a "$REVDOWN" -eq "0" ]; then
-      BRANCH="${BRANCH} @"
-    fi
-    BRANCH="$BRANCH $UPSTREAM"
   fi
   echo "($BRANCH)"
 }

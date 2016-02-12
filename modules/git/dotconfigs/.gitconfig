@@ -21,7 +21,7 @@
   deltaBaseCacheLimit = 2G
   excludesfile = ~/.gitexcludes
 [difftool]
-  prompt = no
+  prompt = yes
 [merge]
   conflictstyle = diff3
   tool = vimdiff
@@ -39,7 +39,7 @@
 [log]
 	date = local
 [difftool "cdiff"]
-  cmd = /usr/local/google/home/primiano/.local/bin/cdiff -s \"$LOCAL\" \"$REMOTE\"
+  cmd = cdiff -s \"$LOCAL\" \"$REMOTE\"
   trustExitCode = false
 [pack]
 	threads = 8
