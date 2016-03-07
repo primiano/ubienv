@@ -1,2 +1,3 @@
 PS1_COLOR="45m"
 alias pm="/D/Progetti/PhotoManagement/pm"
+export PATH="$PATH:$HOME/Library/Python/2.7/bin"
