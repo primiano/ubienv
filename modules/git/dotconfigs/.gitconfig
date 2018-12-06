@@ -13,6 +13,7 @@
   wdiff = diff --word-diff -w
   sxs = difftool @{upstream}.. -t cdiff
   lbh = "!git reflog --date=relative $(git symbolic-ref HEAD | sed 's|refs/heads/||')"
+  reb = "!sh -c \"git rebase $1@{upstream} $1 --fork-point\" -"
 [branch]
   autosetuprebase = always
 [color]
@@ -24,7 +25,7 @@
   prompt = yes
 [merge]
   conflictstyle = diff3
-  tool = vimdiff
+  tool = kdiff3
 [push]
   default = upstream
 [sendemail]
@@ -41,5 +42,19 @@
 [difftool "cdiff"]
   cmd = cdiff -s \"$LOCAL\" \"$REMOTE\"
   trustExitCode = false
+[mergetool "blink"]
+  cmd = /tmp/blinktool \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\"
+  trustExitCode = true
+[mergetool "p4"]
+  cmd = /Applications/p4merge.app/Contents/MacOS/p4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+  trustExitCode = false
+[mergetool "kdiff3"]
+  cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\" --L1 "Common_ancestor" --L2 "Upstream_changes" --L3 "Local_rebase_changes"
+  trustExitCode = false
 [pack]
 	threads = 8
+[http]
+	cookiefile = /Users/primiano/.gitcookies
+[gui]
+	fontui = -family \"Droid Sans Mono\" -size 13 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Droid Sans Mono\" -size 11 -weight normal -slant roman -underline 0 -overstrike 0

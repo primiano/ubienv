@@ -1,8 +1,0 @@
-#!/bin/bash
-setup_keyboard() {
-echo "2" > /sys/module/hid_apple/parameters/fnmode
-echo "1" > /sys/module/hid_apple/parameters/swap_opt_cmd
-echo "0" > /sys/module/hid_apple/parameters/iso_layout
-return 0
-}
-setup_keyboard 
