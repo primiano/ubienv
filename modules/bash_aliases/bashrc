@@ -8,7 +8,7 @@ fi
 
 if [ "${UBIENV_OS}" == "Darwin" ]; then
   alias ll='ls -alhFG'
-  alias vc='/Applications/Visual Studio Code.app/Contents/MacOS/Electron'
+  alias vc='/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron'
 else
   alias ll='ls -lha'
 fi
