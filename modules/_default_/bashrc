@@ -6,6 +6,7 @@ mkdir -p "${TOOLS_DIR}"
 
 export PATH="${PATH}:$HOME/.local/bin"
 export PATH="/usr/local/bin:${PATH}"
+export PATH="/usr/local/git/current/bin:${PATH}"
 
 bind '"\e[1;5C":forward-word'
 bind '"\e[1;5D":backward-word'
